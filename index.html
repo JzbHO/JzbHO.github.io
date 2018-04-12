@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="programming">
+<meta name="description" content="道阻且长，且行且珍惜">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Etalier的后花园">
 <meta property="og:url" content="119.29.20.230/index.html">
 <meta property="og:site_name" content="Etalier的后花园">
-<meta property="og:description" content="programming">
+<meta property="og:description" content="道阻且长，且行且珍惜">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Etalier的后花园">
-<meta name="twitter:description" content="programming">
+<meta name="twitter:description" content="道阻且长，且行且珍惜">
 
 
 
@@ -335,17 +335,19 @@
       
         
           
-            <blockquote>
-<p>我们学习程序语言一定不要被束缚到语言细节和规范上面，而要从计算机逻辑执行层面思考。细节和规范都是人为设定的，是大牛抽象计算机逻辑后的加工品。对于技术问题我们要寻根溯源，要高屋建瓴。</p>
-</blockquote>
-<p>这段时间在准备面试，为了自认为更好的表现而去背大量的面试题。今日在知乎看到了这一段话，让自己醍醐灌顶。</p>
-<p>我们就从java虚拟机这个方面开始说说看，很多小白一上来就被各种分代，处理器类型搞晕了包括我，往往就是死记硬背了那么一些规则，根本谈不上理解的深入。但是事情的出现都是有原因的，都是为了解决实际的问题。</p>
-<p>java程序运行在虚拟机之上，虚拟机又和操作系统打交道，完成数据的存储，运算，输出。虚拟机在加载.class文件的时候会在内存开辟一个“方法区”来存储类的基本信息同时在“堆”生成一个Class对象为反射提供了支持。。内存是有限的，而程序运行时又不断的创建对象，因此我们要定期处理一些不用的对象。生成对象的方法有new，反射，清理对象就有我们常用的GC算法如标记，标记整理，复制算法等等。</p>
-<p>为什么会有三种方法？因为每种方法都有自己的局限性，标记-清除算法的缺点在于会产生大量的内存碎片标记-整理算法则是对它的一种改进，将碎片往一边移动，缺点是。复制算法则解决了内存碎片的问题，但浪费了50%的额外空间。我们要依据不同类型对象的特点采取最合适的算法进行处理。对于新生代，由于数量少我们采用复制算法提高效率，对于老生代对象因为数量众多我们采取标记-整理算法进行处理。</p>
-<p>好了具体垃圾回收算法我们清除了，我们再想想按什么策略去执行垃圾回收？大多数人都能想到的是后台运行一个进程，每隔段时间进行垃圾回收，完成之后再继续执行原来的程序，这就是最原始的串行回收器Serial。多核的出现人们自然想到使多个线程同时执行垃圾回收的工作，减少垃圾回收时间如ParNew，为了将啊垃圾回收对程序的影响(STW)降到最低，人们又发明了并发回收器(CMS)，仍需要STW。最新的G1收集器与CMS一大优势就是建立可预测的回收时间，指明在长度为M毫秒的时间段内，垃圾回收的时间不超过N秒。</p>
-<p>再看看多线程，我们都知道线程切换会消耗资源，那么具体消耗什么资源呢？从计算机底层来讲，操作分三步，从内存取值，计算，将值放入内存。大概过程就是PC(程序计数器)从指存(cache)取下一条指令，IR(指令寄存器)保存当前执行的指令，再从数存取数据结合ALU(算术逻辑单元)通用寄存器完成计算后将结果放入DR(数据缓存寄存器)，最后将DR的值放入内存。我们想一下为什么要这么设计(不要死记硬背)，cache是缓存层可以加快取指令的速度，执行程序时我们当然需要保存现在的指令(IR)和下一条指令(PC)，指令有了我们需要数据吧，那就从数存(AR数据地址寄存器)里面取，指令数据都有了我们要执行具体的运算那么就用到了ALU，但是不是还差了什么？比如1+1，这两个1放到那里，运算结果2又该放那里，这就需要一个工作区(通用寄存器)存放运算间的数据。运算完成了我们需要输出结果，输出到那里？对，就是DR，最后进入内存。为什么不直接输入到内存，这和取值需要cache一个道理，补偿CPU和内存在速度上面的差别。刚开始学组成原理各种寄存器给我留下了莫大的阴影，但是一切的设计背后的思路都是很简单了，各种细节与规定是为了保证实际操作的安全性和可靠性，所以我们首先要去理解设计后面的思想而不要将自己局限于细节。扯的有点远了，再看看多线程切换为什么消耗资源。java虚拟机中的程序计数器保存着当前线程执行的指令，切换线程时就要把线程的执行指令放到操作系统的指令寄存器，除此之外线程的其它资源也需要切换比如I/O设备。除了切换，线程的创建也是需要消耗资源的。  </p>
-
           
+我们学习程序语言一定不要被束缚到语言细节和规范上面，而要从计算机逻辑执行层面思考。细节和规范都是人为设定的，是大牛抽象计算机逻辑后的加工品。对于技术问题我们要寻根溯源，要高屋建瓴。
+
+这段时间在准备面试，为了自认为更好的表现而去背大量的面试题。今日在知乎看到了这一段话，让自己醍醐灌顶。
+我们就从j
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/06/如何学习编程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -485,64 +487,19 @@
       
         
           
-            <p>并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们有以下几种方法：</p>
-<ul>
-<li>CAS算法</li>
-<li>协程，单线程里实现多任务调度</li>
-<li>避免创建不需要的线程因此</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">协程和线程区别：每个线程OS会给它分配固定大小的内存(一般2MB)来存储当前调用或挂起的函数的内部变量，固定大小的栈意味着内存利用率很低或有时面对复杂函数无法满足要求，协成就实现了可动态伸缩的栈(最小2KB，最大1GB).其二OS线程受操作系统调度，调度时要将当前线程状态存到内存，将另一个线程执行指令放到寄存器，这几步很耗时。Go调度器并非硬件调度器，而是Go语言内置的一中机制，因此goroutine调度时则不需要切换上下文。</span><br></pre></td></tr></table></figure>
-<p>Java并发机制的底层实现原理，java代码编译成字节码后加载到JVM中，JVM执行字节码最终转化成汇编命令在CPU上运行，因此Java所使用的并发机制<strong>依赖JVM的实现和CPU指令</strong>。Java大部分并发容器和框架都依赖于volatile和原子操作的实现原理。</p>
-<ul>
-<li>volatile：被volatile修身的变量在进行写操作时会多出一行以Lock为前缀的汇编代码，Lock前缀的指令在多核处理器下执行两件事情，1.将当前处理器缓存行(缓存可分配的最小单元)的数据写入到系统内2.写回内存的操作使其它处理器地址为该缓存的内存无效。这两条保证了所谓的<strong>可见性</strong></li>
-<li>原子操作的实现：首先看一看处理器是如何实现原子操作的，有两核CPU1和CPU2，两个处理器同时对数据i进行操作，<strong>CPU采取总线锁</strong>使得一个数据不能同时被多个处理器操作。大概原理就是使用处理器提供的一个LOCK信号，一个处理器在总线上输出此信号时另一个处理器的请求被阻塞住。这样会导致别的处理器不能处理其它内存地址的数据，<strong>因为总线锁开销比较大出现了缓存锁</strong>，使得CPU1修改缓存行1中数据时若使用了缓存锁定，那么CPU2就不能再缓存该缓存。处理器提供了一系列命令支持这两种机制，如BTS，XADD等，被这些指令操作的内存区域就会加锁，使其它处理器不能同时访问。</li>
-</ul>
-<h2 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h2><p>Java之间通过共享内存进行通信，处理器和编译器为了提高性能会对指令进行重排序，这在单线程情况下不会发生异常，但是在多线程下就会造成结果的不一致</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int a=0;</span><br><span class="line">public int calculate()&#123;</span><br><span class="line">    a=1;  1 </span><br><span class="line">    boolean flag=true;  2</span><br><span class="line">    if(flag)&#123; </span><br><span class="line">        return a*a;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现有两个线程执行这段代码，线程A执行时对指令进行了重排序先制行 2 在执行 1，在中间线程B插入了进来此时a=1值还没被写入导致返回结果为0发生错误。</p>
-<blockquote>
-<p>处理器遵循as-if-serial语义，即不管如何重排序结果不变，但是多线程情况下会出现错误</p>
-</blockquote>
-<p>为了避免重排序，Java引入了volatile变量，使得语句在操作被volatile修饰的变量时禁止指令重排序。在执行指令时插入内存屏障也就是这个目的，<strong>最关键的是volatile的读/写内存语义如下</strong></p>
-<ul>
-<li>写语义：写一个volatile变量时会把线程对应本地内存的值刷新到主存中</li>
-<li>读语义：读一个volatile变量时会把本地内存的值设置为无效，从主存中读</li>
-</ul>
-<p>volatile的缺陷在于<strong>改</strong>这个动作是不完全的，因此又提出了CAS机制，CAS会使用处理器提供的机器级别的原子命令(CMPXCHG)，原子执行读-改-写操作。Java concurrent包中一个通用化的实现模式就是结合两者，步骤如下</p>
-<ul>
-<li>声明共享变量为volatile</li>
-<li>使用CAS实现线程间的同步和通信，(自旋乐观锁，性能大大提升)</li>
-</ul>
-<h2 id="Java线程池"><a href="#Java线程池" class="headerlink" title="Java线程池"></a>Java线程池</h2><p>线程池的核心作用就是维护固定的几个线程，有任务来的时候直接使用避免创建/销毁线程导致的额外开销。 线程池执行流程如下：<br>    提交任务–&gt;核心线程池已满？ 是 提交任务到消息队列—&gt;队列已满？ 是 按指定策略执行<br>                              否 创建线程执行任务                否 加进队列</p>
-<p>了解了线程池的原理最重要的就是如何是去使用它，而使用的关键就是参数的设置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   public ThreadPoolExecutor(int corePoolSize,</span><br><span class="line">                          int maximumPoolSize,</span><br><span class="line">                          long keepAliveTime,</span><br><span class="line">                          TimeUnit unit,</span><br><span class="line">                          BlockingQueue&lt;Runnable&gt; workQueue,</span><br><span class="line">                          ThreadFactory threadFactory,</span><br><span class="line">                          RejectedExecutionHandler handler) &#123;</span><br><span class="line">    if (corePoolSize &lt; 0 ||</span><br><span class="line">        maximumPoolSize &lt;= 0 ||</span><br><span class="line">        maximumPoolSize &lt; corePoolSize ||</span><br><span class="line">        keepAliveTime &lt; 0)</span><br><span class="line">        throw new IllegalArgumentException();</span><br><span class="line">    if (workQueue == null || threadFactory == null || handler == null)</span><br><span class="line">        throw new NullPointerException();</span><br><span class="line">    this.corePoolSize = corePoolSize;</span><br><span class="line">    this.maximumPoolSize = maximumPoolSize;</span><br><span class="line">    this.workQueue = workQueue;</span><br><span class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</span><br><span class="line">    this.threadFactory = threadFactory;</span><br><span class="line">    this.handler = handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上是ThreadPoolExecutor的构造函数，我们逐一看一看各参数的含义</p>
-<ul>
-<li>corePoolSize      一直维护的线程数</li>
-<li>maximumPoolSize   最大线程数</li>
-<li>keepAliveTime     多余线程存活的时间(实际线程数比corePool多的那部分)</li>
-<li>workQueue         存储线程的队列，可选择ArrayBlockingQueue等</li>
-<li>threadFactory     创建线程时的用到的工厂，可通过自定义工厂创建更有意义的线程名称</li>
-<li>handler           队列满时采取的策略 有AbortPolicy(直接抛出异常)/CallerRunsPolicy(只用调用者所在的线程执行)等等</li>
-</ul>
-<p>提交线程池有两个方法，一个是submit这个不需要返回值，一个是submit会返回一个future对象，并通过future的get()方法获取返回值(该方法会阻塞直到线程完成任务)。</p>
-<p>合理配置线程池，CPU密集型任务配置少数线程池如N(CPU个数)+1，I/O密集型任务配置多一点的线程池如2N(CPU个数)，其次是使用有界队列即使发现错误。</p>
-<h2 id="Executor框架"><a href="#Executor框架" class="headerlink" title="Executor框架"></a>Executor框架</h2><p>在HotSpot VM的线程模型中，Java线程被一对一的映射成本地操作系统的线程，操作系统会调度线程把它们分配给可用的CPU。在上层Java通过用<strong>户级调度器Executor</strong>将任务映射为几个线程，在下层操作系统内核将这些线程映射到硬件处理器上面。</p>
-<p>Executor的出现将任务与如何执行任务分离开了，避免了每创建一个线程就要执行它。Executor的整个架构有一下几个要点</p>
-<ul>
-<li>实现了Runnable和Callable的对象可提交到Executor运行</li>
-<li>可返回Future获取线程执行后的返回值</li>
-<li>内部维护一个线程池(上面介绍的)来处理提交过来的任务</li>
-</ul>
-<p>Executor最核心的就是ThreadPoolExecutor，下面介绍以下以及各自使用场景</p>
-<ul>
-<li>FixedThreadPool 固定线程个数，用于高负载的服务器，满足资源的管理需求</li>
-<li>SingleThreadPool 单个线程,保证顺序的执行任务</li>
-<li>CachedThreadPool 大小无界的线程池，使用负载比较轻的服务器</li>
-<li>ScheduledThreadPoolExecutor 后台周期执行任务</li>
-</ul>
+          并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们有以下几种方法：
 
-          
+CAS算法
+协程，单线程里实现多任务调度
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/01/Java并发编程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -660,15 +617,21 @@
       
         
           
-            <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><blockquote>
-<p>观察者定义了一种一对多的依赖关系，多个观察者监听一个主题对象，当主题对象的状态发生改变时，这些观察者会被通知从而自我跟新。</p>
-</blockquote>
-<p>结构图</p>
-<p><img src="/images/observer.png" alt=""></p>
-<p>具体代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">abstract class Subject&#123;</span><br><span class="line"></span><br><span class="line">    private ArrayList&lt;BaseObserver&gt; list=new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public void attach(BaseObserver observer)&#123;</span><br><span class="line">        list.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void Deattach(Observer observer)&#123;</span><br><span class="line">        list.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void notifyall()&#123;</span><br><span class="line">        for(BaseObserver observer:list)&#123;</span><br><span class="line">            observer.update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ConcreteSubject extends Subject&#123;</span><br><span class="line"></span><br><span class="line">    private int state;</span><br><span class="line"></span><br><span class="line">    public int getState() &#123;</span><br><span class="line">        return state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setState(int state) &#123;</span><br><span class="line">        this.state = state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class BaseObserver &#123;</span><br><span class="line">    protected Subject subject;</span><br><span class="line">    public abstract void update();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BinaryObserver extends BaseObserver&#123;</span><br><span class="line"></span><br><span class="line">    public BinaryObserver(Subject subject)&#123;</span><br><span class="line">        this.subject=subject;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void update() &#123;</span><br><span class="line">        System.out.println(&quot;BinaryObserver update&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class HexaObserver extends BaseObserver&#123;</span><br><span class="line"></span><br><span class="line">    public HexaObserver(Subject subject)&#123;</span><br><span class="line">        this.subject=subject;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void update() &#123;</span><br><span class="line">        System.out.println(&quot;HexaObserver update&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class Observer &#123;</span><br><span class="line">    </span><br><span class="line">    public static void main(String[]args)&#123;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        ConcreteSubject subject=new ConcreteSubject();</span><br><span class="line">        BaseObserver hexaobserver=new HexaObserver(subject);</span><br><span class="line">        BaseObserver binaryObserver=new BinaryObserver(subject);</span><br><span class="line"></span><br><span class="line">        //添加观察者</span><br><span class="line">        subject.attach(hexaobserver);</span><br><span class="line">        subject.attach(binaryObserver);</span><br><span class="line"></span><br><span class="line">        subject.setState(1);</span><br><span class="line">        subject.notifyall();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"></span><br><span class="line">HexaObserver update</span><br><span class="line">BinaryObserver update</span><br></pre></td></tr></table></figure>
+          设计模式观察者模式
+观察者定义了一种一对多的依赖关系，多个观察者监听一个主题对象，当主题对象的状态发生改变时，这些观察者会被通知从而自我跟新。
 
-          
+结构图
+
+具体代码如下
+12345678910111213141516171819202122232425262728293031323334353637
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/31/第一篇博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -738,7 +701,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">江泽斌</p>
-              <p class="site-description motion-element" itemprop="description">programming</p>
+              <p class="site-description motion-element" itemprop="description">道阻且长，且行且珍惜</p>
           </div>
 
           <nav class="site-state motion-element">
