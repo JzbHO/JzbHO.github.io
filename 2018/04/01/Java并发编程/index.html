@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="多线程," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="title: Java并发编程date: 2018-04-1 17:25:35tags: 多线程categories:   Java学习tags: 多线程   并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们">
+<meta name="description" content="并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们有以下几种方法：  CAS算法 协程，单线程里实现多任务调度 避免创建不需要的线程因此  1协程和线程区别：每个线程OS会给它分配固定大小的内存(一般2MB)来存">
+<meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Etalier的后花园">
-<meta property="og:url" content="119.29.20.230/2018/04/12/Java并发编程/index.html">
+<meta property="og:title" content="Java并发编程">
+<meta property="og:url" content="119.29.20.230/2018/04/01/Java并发编程/index.html">
 <meta property="og:site_name" content="Etalier的后花园">
-<meta property="og:description" content="title: Java并发编程date: 2018-04-1 17:25:35tags: 多线程categories:   Java学习tags: 多线程   并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们">
+<meta property="og:description" content="并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们有以下几种方法：  CAS算法 协程，单线程里实现多任务调度 避免创建不需要的线程因此  1协程和线程区别：每个线程OS会给它分配固定大小的内存(一般2MB)来存">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-12T08:38:33.605Z">
+<meta property="og:updated_time" content="2018-04-12T08:40:42.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Etalier的后花园">
-<meta name="twitter:description" content="title: Java并发编程date: 2018-04-1 17:25:35tags: 多线程categories:   Java学习tags: 多线程   并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们">
+<meta name="twitter:title" content="Java并发编程">
+<meta name="twitter:description" content="并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们有以下几种方法：  CAS算法 协程，单线程里实现多任务调度 避免创建不需要的线程因此  1协程和线程区别：每个线程OS会给它分配固定大小的内存(一般2MB)来存">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="119.29.20.230/2018/04/12/Java并发编程/"/>
+  <link rel="canonical" href="119.29.20.230/2018/04/01/Java并发编程/"/>
 
 
 
 
 
-  <title> | Etalier的后花园</title>
+  <title>Java并发编程 | Etalier的后花园</title>
   
 
 
@@ -242,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="119.29.20.230/2018/04/12/Java并发编程/">
+    <link itemprop="mainEntityOfPage" href="119.29.20.230/2018/04/01/Java并发编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江泽斌">
@@ -259,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Java并发编程</h1>
         
 
         <div class="post-meta">
@@ -271,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T16:38:33+08:00">
-                2018-04-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T17:25:35+08:00">
+                2018-04-01
               </time>
             
 
@@ -281,6 +282,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -309,14 +332,7 @@
       
 
       
-        <hr>
-<p>title: Java并发编程<br>date: 2018-04-1 17:25:35<br>tags: 多线程<br>categories: </p>
-<ul>
-<li>Java学习<br>tags:</li>
-<li>多线程</li>
-</ul>
-<hr>
-<p>并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们有以下几种方法：</p>
+        <p>并发编程的核心是为了提高电脑资源的利用率，因为现代操作系统都是多核的，可以同时跑多个线程。那么是不是线程越多越好？ 由于线程的切换涉及上下文的切换，所谓上下文就是线程运行时需要的资源，系统要分配给它消耗时间。所以为了减少上下文的切换，我们有以下几种方法：</p>
 <ul>
 <li>CAS算法</li>
 <li>协程，单线程里实现多任务调度</li>
@@ -387,6 +403,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+        </div>
+      
 
       
       
@@ -396,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/06/如何学习编程/" rel="next" title="如何学习编程">
-                <i class="fa fa-chevron-left"></i> 如何学习编程
+              <a href="/2018/03/31/第一篇博客/" rel="next" title="第一篇博客">
+                <i class="fa fa-chevron-left"></i> 第一篇博客
               </a>
             
           </div>
@@ -405,6 +427,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/06/如何学习编程/" rel="prev" title="如何学习编程">
+                如何学习编程 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -488,7 +514,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
