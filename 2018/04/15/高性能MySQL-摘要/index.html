@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="高可用,高性能,分布式," />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="高性能架构吞吐量：单位时间系统处理请求的数量。影响性能的主要因素就是CPU，内存，网络，磁盘，要分析清楚那种资源造成了瓶颈再加以解决问题。性能优化大体上可分为以下三类  Web前端优化,包括减少Http请求(多个资源合并到一次请求)，对文件进行压缩，开启浏览器缓存，采取CDN加速缓存静态资源 服务端性能优化，包括使用分布式缓存，异步化操作，集群配置 代码优化，包括使用多线程(充分利用多核CPU的优">
-<meta name="keywords" content="高可用,高性能,分布式">
+<meta name="description" content="本文章是记录在阅读&amp;lt;&amp;lt;高性能MySQL&amp;gt;&amp;gt;时自认为比较精要的内容和一些个人思考、总结。  第四章-数据类型优化三条准则1.更小的通常更好，尽量使用可以正确存储数据的最小数据类型，占用更少的磁盘，内存缓存，处理时需要的CPU周期也更短。 2.简单就好，简单数据类型的操作需要更少的CPU周期，如整型比字符操作代价更低(字符排序规则更复杂)。 3.尽量避免NULL，最好将列值指">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大型网站技术架构-摘要">
-<meta property="og:url" content="119.29.20.230/2018/04/14/大型网站技术架构-摘要/index.html">
+<meta property="og:title" content="高性能MySQL-摘要">
+<meta property="og:url" content="119.29.20.230/2018/04/15/高性能MySQL-摘要/index.html">
 <meta property="og:site_name" content="Etalier的后花园">
-<meta property="og:description" content="高性能架构吞吐量：单位时间系统处理请求的数量。影响性能的主要因素就是CPU，内存，网络，磁盘，要分析清楚那种资源造成了瓶颈再加以解决问题。性能优化大体上可分为以下三类  Web前端优化,包括减少Http请求(多个资源合并到一次请求)，对文件进行压缩，开启浏览器缓存，采取CDN加速缓存静态资源 服务端性能优化，包括使用分布式缓存，异步化操作，集群配置 代码优化，包括使用多线程(充分利用多核CPU的优">
+<meta property="og:description" content="本文章是记录在阅读&amp;lt;&amp;lt;高性能MySQL&amp;gt;&amp;gt;时自认为比较精要的内容和一些个人思考、总结。  第四章-数据类型优化三条准则1.更小的通常更好，尽量使用可以正确存储数据的最小数据类型，占用更少的磁盘，内存缓存，处理时需要的CPU周期也更短。 2.简单就好，简单数据类型的操作需要更少的CPU周期，如整型比字符操作代价更低(字符排序规则更复杂)。 3.尽量避免NULL，最好将列值指">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-14T15:34:13.713Z">
+<meta property="og:updated_time" content="2018-04-15T11:10:45.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大型网站技术架构-摘要">
-<meta name="twitter:description" content="高性能架构吞吐量：单位时间系统处理请求的数量。影响性能的主要因素就是CPU，内存，网络，磁盘，要分析清楚那种资源造成了瓶颈再加以解决问题。性能优化大体上可分为以下三类  Web前端优化,包括减少Http请求(多个资源合并到一次请求)，对文件进行压缩，开启浏览器缓存，采取CDN加速缓存静态资源 服务端性能优化，包括使用分布式缓存，异步化操作，集群配置 代码优化，包括使用多线程(充分利用多核CPU的优">
+<meta name="twitter:title" content="高性能MySQL-摘要">
+<meta name="twitter:description" content="本文章是记录在阅读&amp;lt;&amp;lt;高性能MySQL&amp;gt;&amp;gt;时自认为比较精要的内容和一些个人思考、总结。  第四章-数据类型优化三条准则1.更小的通常更好，尽量使用可以正确存储数据的最小数据类型，占用更少的磁盘，内存缓存，处理时需要的CPU周期也更短。 2.简单就好，简单数据类型的操作需要更少的CPU周期，如整型比字符操作代价更低(字符排序规则更复杂)。 3.尽量避免NULL，最好将列值指">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="119.29.20.230/2018/04/14/大型网站技术架构-摘要/"/>
+  <link rel="canonical" href="119.29.20.230/2018/04/15/高性能MySQL-摘要/"/>
 
 
 
 
 
-  <title>大型网站技术架构-摘要 | Etalier的后花园</title>
+  <title>高性能MySQL-摘要 | Etalier的后花园</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="119.29.20.230/2018/04/14/大型网站技术架构-摘要/">
+    <link itemprop="mainEntityOfPage" href="119.29.20.230/2018/04/15/高性能MySQL-摘要/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江泽斌">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">大型网站技术架构-摘要</h1>
+          <h1 class="post-title" itemprop="name headline">高性能MySQL-摘要</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T23:30:13+08:00">
-                2018-04-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T19:07:20+08:00">
+                2018-04-15
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/架构/" itemprop="url" rel="index">
-                    <span itemprop="name">架构</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -352,44 +352,81 @@
       
 
       
-        <h2 id="高性能架构"><a href="#高性能架构" class="headerlink" title="高性能架构"></a>高性能架构</h2><p>吞吐量：单位时间系统处理请求的数量。<br>影响性能的主要因素就是CPU，内存，网络，磁盘，要分析清楚那种资源造成了瓶颈再加以解决问题。性能优化大体上可分为以下三类</p>
-<ul>
-<li>Web前端优化,包括减少Http请求(多个资源合并到一次请求)，对文件进行压缩，开启浏览器缓存，采取CDN加速缓存静态资源</li>
-<li>服务端性能优化，包括使用分布式缓存，异步化操作，集群配置</li>
-<li>代码优化，包括使用多线程(充分利用多核CPU的优势)，资源复用(包括单例模式，各种线程池)，不同场景选择合适数据结构，垃圾回收(Java中尽量避免Full GC,老年代空间占满时)</li>
-<li>存储性能优化，固态硬盘代替机械硬盘，存储结构LSM树代替B+树(硬盘随机读写性能不好，快随机读写性能好)</li>
-</ul>
-<h2 id="高可用架构"><a href="#高可用架构" class="headerlink" title="高可用架构"></a>高可用架构</h2><p>1.使用负载均服务器和Web服务器集群，达到单点出现故障时请求转移的功能。</p>
-<p>2.设置超时时间，用户的一个操作在固定时间内得不到响应时抛出异常，可根据具体策略选择重试或者将请求转移到其它服务器上面。</p>
-<p>3.异步调用，但不适合那些第一步调用成功才能执行第二步调用的操作。</p>
-<p>4.服务降级 </p>
-<ul>
-<li>拒绝服务，拒绝低优先级的调用，降低调用并发数量。</li>
-<li>关闭功能，高并发情况下关闭不必要的功能。</li>
-</ul>
-<p>5.网络中不可避免会出现重复调用，这时就要求我们服务具有幂等性功能，有些服务天然具有幂等性如设置性别，设置多少次都是男性。有的如交易转账服务就不具备幂等性，因此可用根据一些交易编号信息来进行判断。</p>
-<h2 id="高可用数据"><a href="#高可用数据" class="headerlink" title="高可用数据"></a>高可用数据</h2><p>高可用的数据有三个含义，数据持久性，数据可访问性(故障转移和上面相似)，数据一致性又分为以下三个层次：</p>
-<ul>
-<li>数据强一致(每时每刻副本中的数据都是一样的)</li>
-<li>数据用户一致(副本中数据可能不一致，但是通过校验等机制，用户可得到一个一致的数据)</li>
-<li>数据最终一致(用户层面可能也不一致，但最后系统会自我调整到最终一致)</li>
-</ul>
-<p>因为强一致性的满足对性能消耗很大，因此许多应用选择的是用户一致性。</p>
-<p>为了达到高可用数据的目的我们有以下几种方式：</p>
-<ul>
-<li>数据备份，又分为异步备份和同步备份。等待数据持久化到一个备份中就返回是异步备份，等待数据持久化到所有备份中才返回就是同步备份。</li>
-</ul>
-<p>另外如何判断某台服务器是否宕机，可通过心跳的手段进行检测。</p>
-<h2 id="高伸缩性架构"><a href="#高伸缩性架构" class="headerlink" title="高伸缩性架构"></a>高伸缩性架构</h2><blockquote>
-<p>所谓的网站伸缩性是指不需要改变网站的软硬件设计，仅仅通过改变部署服务器的数量就扩大或缩小网站的服务处理能力。</p>
+        <blockquote>
+<p>本文章是记录在阅读&lt;&lt;高性能MySQL&gt;&gt;时自认为比较精要的内容和一些个人思考、总结。</p>
 </blockquote>
-<p>常用的方案有nginx做反向代理，分布式缓存等。</p>
-<h2 id="高扩展架构"><a href="#高扩展架构" class="headerlink" title="高扩展架构"></a>高扩展架构</h2><blockquote>
-<p>开发低耦合系统是软件设计的终极目标之一。笔者认为软件架构师最大价值不在于掌握多少先进的技术而在于把系统切分成N个低耦合子模块的能力。</p>
+<h2 id="第四章-数据类型优化"><a href="#第四章-数据类型优化" class="headerlink" title="第四章-数据类型优化"></a>第四章-数据类型优化</h2><p>三条准则<br>1.更小的通常更好，尽量使用可以正确存储数据的最小数据类型，占用更少的磁盘，内存缓存，处理时需要的CPU周期也更短。</p>
+<p>2.简单就好，简单数据类型的操作需要更少的CPU周期，如整型比字符操作代价更低(字符排序规则更复杂)。</p>
+<p>3.尽量避免NULL，最好将列值指定为NOT NULL。若查询时包含NULL的列会使得MySQL更难优化。</p>
+<ul>
+<li>整数类型：根据需求选择 TINYINT,INT,BIGINT这几种整数类型，与准则一对应。</li>
+<li>实数类型(小数)：DECIMAL，确保精度可使用整型代替它。</li>
+<li>字符串类型，固定长度或者很短的字符串使用char(减少磁盘碎片)，长度变化比较大使用varchar(varchar(num) 表示最大长度，超过num不可存放)，缺点是需要额外字节存储字符串长度。</li>
+<li>MySQL提供IP和整型相互转化的函数，建议使用整数类型存储IP地址。</li>
+</ul>
+<h2 id="第五章-高性能索引"><a href="#第五章-高性能索引" class="headerlink" title="第五章-高性能索引"></a>第五章-高性能索引</h2><pre><code>索引优点，避免全表扫描，将随机I/O变为顺序I/O，避免临时排序。
+</code></pre><p>1.索引组织方式</p>
+<ul>
+<li>B+ 树(InnoDB引擎默认)</li>
+<li>Hash 方式</li>
+</ul>
+<p>2.索引类型</p>
+<ul>
+<li>聚集索引(一个表只用一个，索引顺序和物理存储顺序一致,innodb支持但是更新代价大)</li>
+<li>联合索引(满足最左匹配)</li>
+<li>唯一索引</li>
+<li>普通索引(可重复)</li>
+</ul>
+<p>3.关于索引的意见</p>
+<ul>
+<li>类型很少如性别，bit不要创建索引</li>
+<li>数据很大如image，text不要创建索引，可以索引部分字符(即前缀索引，ADD KEY (column(7)) )</li>
+<li>where，order by子句后面的属性创建索引</li>
+<li>避免范围查询，具体而言就是SQL语句的优化</li>
+</ul>
+<blockquote>
+<p>创建索引一方面会增加数据量，一方面会变动底层数据结构，因此不要滥用索引</p>
 </blockquote>
-<p>1.利用分布式消息降低系统耦合度。对于存储消息的队列，我们可以通过集群保证它的伸缩性，对于数据的可用性方面当消费队列满时我们可写入磁盘，为了避免服务器宕机造成消息丢失，我们可以等待消费者处理完后再删除消息。</p>
-<p>2.分布式服务<br>分布式服务在消息队列基础上跟进一步，将一个系统中的服务通过相同的接口进行需要的服务调用。Spring Cloud提供了一套完整的方案解决服务化系统中会遇到的各种麻烦。</p>
-<p>3.可扩展的数据结构<br>这里的典范就是Hbase，动态增添列，等一系列特点保证了其高扩展性。</p>
+<h2 id="第六章-查询性能优化"><a href="#第六章-查询性能优化" class="headerlink" title="第六章-查询性能优化"></a>第六章-查询性能优化</h2><p>主要还是SQL语句方面的优化</p>
+<ul>
+<li>不要使用like，索引失效</li>
+<li>用union all 代替 or</li>
+<li>用not exist(子查询会用到索引) 代替 not in</li>
+<li>between 代替 in</li>
+<li>不要对null值进行判断，会使得索引失效</li>
+<li>避免大事务的操作</li>
+</ul>
+<h2 id="第七章-MySQL高级特性"><a href="#第七章-MySQL高级特性" class="headerlink" title="第七章-MySQL高级特性"></a>第七章-MySQL高级特性</h2><p>1.查询缓存</p>
+<ul>
+<li>InnoDB事务中若更新了某个表且未提交，则相关表的数据都不能缓存</li>
+<li>大缓存块失效时会使得服务停止<br>….<br>….</li>
+</ul>
+<p>因为MySQL的缓存会带来各种各样的负面因素，因此书中的建议是默认关闭查询缓存</p>
+<h2 id="第八章-优化服务器配置"><a href="#第八章-优化服务器配置" class="headerlink" title="第八章-优化服务器配置"></a>第八章-优化服务器配置</h2><ul>
+<li>InnoDB的thread_cache_size 线程缓存，观察Threads_connected数量，若保持在100~120之间，设置缓存大小为20，在500~700设置缓存大小为200。</li>
+<li>InnoDB的innodb_thread_concurrency设置并发数量</li>
+<li>max_connections 设置最大连接数</li>
+<li><strong>innodb_buffer_pool_size</strong> InnoDB缓冲池，缓存索引，脏数据(更改但没写入磁盘中)等</li>
+<li><strong>innodb_log_file_size</strong> 日志缓冲区，避免每次事务执行时进行I/O操作，缓冲区满时才进行I/O操作。执行大事务时(需要保存的信息量也很多)，减少I/O次数</li>
+</ul>
+<h2 id="第十二章-高可用性"><a href="#第十二章-高可用性" class="headerlink" title="第十二章-高可用性"></a>第十二章-高可用性</h2><p>衡量高可用的一个指标就是<strong>一段时间内系统可用时间/系统运行时间</strong>，高可用性常和冗余，负载均衡等概念混淆。</p>
+<p>导致宕机的原因有以下几点</p>
+<ul>
+<li>磁盘空间耗尽 (环境因素)</li>
+<li>运行糟糕的SQL，糟糕的Schema和索引设计 (性能因素)</li>
+</ul>
+<p>对于环境问题我们可用使用监控器进行监控，或者进行复制保证冗余达到高可用性。(但高可用其实是很复杂的一块内容，以后会专门写有关它的系列文章)</p>
+<h2 id="第十四章-应用层优化"><a href="#第十四章-应用层优化" class="headerlink" title="第十四章- 应用层优化"></a>第十四章- 应用层优化</h2><p>所有优化都是对于计算机资源而言的，弄清楚是什么东西在消耗系统中每台主机的CPU，磁盘，网络，以及内存资源。</p>
+<p>1.Web服务器问题</p>
+<ul>
+<li>寻找最佳并发度，对于I/O密集型的工作负载最佳并发度等于CPU数量，但是进程并非总是处于可运行状态，会有一些阻塞式请求比如I/O，数据库查询，网络请求，因此最佳并发度往往略大于CPU核数，但到底那个数量最合适还需要精确测量。</li>
+<li>配置文件中许多选项的修改。。。(很多，准备另写一篇文章详细讲解)</li>
+</ul>
+<p>2.缓存</p>
+<p>MySQL服务器有自己的内部缓存，上文已经介绍过，我们现在主要关注下应用层缓存以及更高层次的缓存。</p>
+<blockquote>
+<p>缓存并非总是提高效率，缓存的开销=检查缓存的开销+缓存不命中的概率<em>生成数据的开销+缓存命中的概率 </em> 提供数据的开销。我们要将缓存的开销和没有缓存时生成数据的开销进行比较才能确定是否真的需要缓存。</p>
+</blockquote>
 
       
     </div>
@@ -407,11 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/高可用/" rel="tag"># 高可用</a>
-          
-            <a href="/tags/高性能/" rel="tag"># 高性能</a>
-          
-            <a href="/tags/分布式/" rel="tag"># 分布式</a>
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
       
@@ -424,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/12/浮点数的一些思考/" rel="next" title="浮点数的一些思考">
-                <i class="fa fa-chevron-left"></i> 浮点数的一些思考
+              <a href="/2018/04/14/大型网站技术架构-摘要/" rel="next" title="大型网站技术架构-摘要">
+                <i class="fa fa-chevron-left"></i> 大型网站技术架构-摘要
               </a>
             
           </div>
@@ -433,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/15/高性能MySQL-摘要/" rel="prev" title="高性能MySQL-摘要">
-                高性能MySQL-摘要 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#高性能架构"><span class="nav-number">1.</span> <span class="nav-text">高性能架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用架构"><span class="nav-number">2.</span> <span class="nav-text">高可用架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用数据"><span class="nav-number">3.</span> <span class="nav-text">高可用数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高伸缩性架构"><span class="nav-number">4.</span> <span class="nav-text">高伸缩性架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高扩展架构"><span class="nav-number">5.</span> <span class="nav-text">高扩展架构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-数据类型优化"><span class="nav-number">1.</span> <span class="nav-text">第四章-数据类型优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-高性能索引"><span class="nav-number">2.</span> <span class="nav-text">第五章-高性能索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-查询性能优化"><span class="nav-number">3.</span> <span class="nav-text">第六章-查询性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-MySQL高级特性"><span class="nav-number">4.</span> <span class="nav-text">第七章-MySQL高级特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章-优化服务器配置"><span class="nav-number">5.</span> <span class="nav-text">第八章-优化服务器配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十二章-高可用性"><span class="nav-number">6.</span> <span class="nav-text">第十二章-高可用性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十四章-应用层优化"><span class="nav-number">7.</span> <span class="nav-text">第十四章- 应用层优化</span></a></li></ol></div>
             
 
           </div>
